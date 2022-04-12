@@ -1,0 +1,25 @@
+body {
+  background: black;
+  color: grey;
+  font-weight: 700;
+}
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 0.2rem solid white;
+  border-radius: 0.5rem;
+}
+li {
+  list-style: none;
+}
+button {
+  border: none;
+  background: cornflowerblue;
+  color: white;
+  border-radius: 0.5rem;
+  height: 2rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
