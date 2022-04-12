@@ -1,19 +1,40 @@
 import "./App.css";
-
+import React from "react";
 function App() {
+  const [state, dispatch] = React.useReducer(reducer, []);
+  function reducer(state, action) {
+    console.log("got action type: " + action.type);
+    if (action.type == "ACTIONLOVE") {
+      return [...state, "love"];
+    } else if (action.type == "ACTIONPEACE") {
+      return [...state, "peace"];
+    } else if (action.type == "ACTIONGET") {
+      return [...state, "ADD"];
+    }
+    throw new Error("no matching action type!");
+  }
+
   function handleClickThree() {
-    console.log("3");
+    dispatch({ type: "ACTIONPEACE" });
   }
   function handleClickTwo() {
-    console.log("2");
+    dispatch({ type: "ACTIONLOVE" });
   }
-  function handleClick() {}
+  function handleClick() {
+    dispatch({ type: "ACTIONGET" });
+  }
+
   return (
     <div className="App">
       <main>
         <ul id="list">
           <li id="one">ONE</li>
           <li id="two">TWO</li>
+          {state.map((element, index) => (
+            <li key={index} style={{ color: "yellow" }}>
+              {element}
+            </li>
+          ))}
         </ul>
       </main>
       <div>
