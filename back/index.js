@@ -20,11 +20,20 @@ var server = http.createServer((req, res) => {
   else if (req.method == "POST") {
     console.log("GOT A POST REQUEST");
 
-    fs.writeFile("test.txt", "Orc!!!Waaar!", "utf8", (err) => {
-      if (err) {
-        console.log(err);
-        throw err;
-      }
+    let payload = "";
+    req.on("data", (chunk) => {
+      payload += chunk;
+    });
+    req.on("end", () => {
+      let data = JSON.parse(payload);
+      fs.writeFile("test.txt", data.name, "utf8", (err) => {
+        if (err) {
+          console.log(err);
+          throw err;
+        }
+      });
+
+      res.end();
     });
   }
 });
