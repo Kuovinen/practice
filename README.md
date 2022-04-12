@@ -1,2 +1,2 @@
 ##practice
-Basic NodeJS and basic HTML or REACT webpage interaction. Post and Get requests and responses.
+Basic NodeJS and basic HTML and REACT webpage interaction. Post and Get requests and responses.
